@@ -12,6 +12,8 @@ public class TimeUntil{
         int currentMinute = ldt.getMinute();
         int currentSecond = ldt.getSecond();
         int futureHour, futureMinute, futureSecond;
+        int hourDiff, minuteDiff, secondDiff;
+
         String futureTime;
         
         System.out.println("Enter a time in hh:mm:ss format");
@@ -24,10 +26,14 @@ public class TimeUntil{
         futureMinute = Integer.parseInt(futureTime.substring(3, 5));
         futureSecond = Integer.parseInt(futureTime.substring(6, 8));
 
-        System.out.println(futureHour);
-        System.out.println(futureMinute);
-        System.out.println(futureSecond);
-
+        System.out.println(currentHour);
+        System.out.println(currentMinute);
+        System.out.println(currentSecond);
+        
+        hourDiff = futureHour - currentHour;
+        minuteDiff = futureMinute - currentMinute;
+        secondDiff = futureSecond - currentSecond;
+        
         //able to collect data. now need to write code to determine what type of math to do 
     }
 

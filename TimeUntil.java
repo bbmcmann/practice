@@ -38,17 +38,45 @@ public class TimeUntil{
         if(!(futureSecond > currentSecond)){
             currentMinute = currentMinute + 1;
         }
-
+        
         hourDiff = futureHour - currentHour;
         minuteDiff = futureMinute - currentMinute;
         secondDiff = futureSecond - currentSecond;
 
-        
+        if(hourDiff < 0){       // to make sure time diff is correct if past 12
+            hourDiff += 12;
+        }
 
-        // System.out.println(hourDiff);
-        // System.out.println(minuteDiff);
-        // System.out.println(secondDiff);
+        if(minuteDiff < 0){
+            minuteDiff += 60;
+            hourDiff -= 1;
+            if(hourDiff < 0){       // to make sure time diff is correct if past 12
+                hourDiff += 12;
+            }
+        }
 
+        if(secondDiff < 0){
+            secondDiff += 60;
+            minuteDiff -= 1;
+            if(minuteDiff < 0){
+                minuteDiff += 60;
+                hourDiff -= 1;
+                if(hourDiff < 0){       // to make sure time diff is correct if past 12
+                    hourDiff += 12;
+                }
+            }
+        }
+
+
+        if(hourDiff != 0){
+            System.out.println("Hour difference: " + hourDiff);
+        }
+        if(minuteDiff != 0){
+            System.out.println("Minute difference: " + minuteDiff);
+        }
+        if(secondDiff != 0){
+            System.out.println("Second difference: " + secondDiff);
+        }
         //able to collect data. now need to write code to determine what type of math to do 
     }
 

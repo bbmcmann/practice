@@ -58,7 +58,7 @@ public class Farkle{
                     }
                 }
 
-                if(threeKind(p1Roll, numRolling)){
+                if(threeKind(p1Roll, numRolling) || numberRolled(p1Roll, 1) || numberRolled(p1Roll, 5)){
                     System.out.println("Do you want to take out any 3 of a kind?(y/n)");
                     takeOut = input.nextLine();
 
@@ -104,7 +104,7 @@ public class Farkle{
                     
                 }
                 else{
-                    System.out.println("You got a farkle.");
+                    System.out.println("FARKLE! BIG RIP.");
                 }
 
                 playerOneScore += 1000;
@@ -158,6 +158,15 @@ public class Farkle{
             }
 
             numEqual = 0;
+        }
+        return false;
+    }
+
+    public static boolean numberRolled(int[] roll, int numCheck){
+        for(int i = 0; i < roll.length; i++){
+            if(roll[i] == numCheck){
+                return true;
+            }
         }
         return false;
     }

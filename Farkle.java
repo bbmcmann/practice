@@ -24,7 +24,6 @@ public class Farkle{
         System.out.println("Cheating is not allowed because cheating is against te rules. So dont do it.");
 
 
-
         System.out.println("Player 1 rolls first.");
         playerOneRoll = random.nextInt(6)+1;
 
@@ -59,55 +58,65 @@ public class Farkle{
                     }
                 }
 
-                System.out.println("Do you want to take out any 3 of a kind?(y/n)");
-                takeOut = input.nextLine();
-
-                while(takeOut.equals("y")){
-                    System.out.println("Which die? (enter the number ON the die)");
-                    dieOut = input.nextInt();
-
-                    if(dieOut == 1){
-                        playerOneScore += 1000;
-                    }
-                    else{
-                        playerOneScore += dieOut * 100;
-                    }
-
-                    numRolling --;
+                if(threeKind(p1Roll, numRolling)){
                     System.out.println("Do you want to take out any 3 of a kind?(y/n)");
                     takeOut = input.nextLine();
-                    takeOut = input.nextLine();
-                }
 
-                System.out.println("Do you want to take out any 1's or 5's?(y/n)");
-                takeOut = input.nextLine();
+                    while(takeOut.equals("y")){
+                        System.out.println("Which die? (enter the number ON the die)");
+                        dieOut = input.nextInt();
 
-                //only runs if taking out dice
-                while(takeOut.equals("y")){
-                    System.out.println("Which dice? (enter 1 or 5)");
-                    dieOut = input.nextInt();
+                        if(dieOut == 1){
+                            playerOneScore += 1000;
+                        }
+                        else{
+                            playerOneScore += dieOut * 100;
+                        }
 
-                    if(dieOut == 1){
-                        playerOneScore += 100;
+                        numRolling --;
+                        System.out.println("Do you want to take out any 3 of a kind?(y/n)");
+                        takeOut = input.nextLine();
+                        takeOut = input.nextLine();
                     }
-                    else{
-                        playerOneScore += 50;
-                    }
 
-                    numRolling --;
                     System.out.println("Do you want to take out any 1's or 5's?(y/n)");
                     takeOut = input.nextLine();
-                }
+
+                    //only runs if taking out dice
+                    while(takeOut.equals("y")){
+                        System.out.println("Which dice? (enter 1 or 5)");
+                        dieOut = input.nextInt();
+
+                        if(dieOut == 1){
+                            playerOneScore += 100;
+                        }
+                        else{
+                            playerOneScore += 50;
+                        }
+
+                        numRolling --;
+                        System.out.println("Do you want to take out any 1's or 5's?(y/n)");
+                        takeOut = input.nextLine();
+                        takeOut = input.nextLine();
+                    }
                 
+
+                    
+                }
+                else{
+                    System.out.println("You got a farkle.");
+                }
 
                 playerOneScore += 1000;
                 p1Turn = false;
                 System.out.println("__________________");
+    
             }
+            //PLAYER 2_____________________________________
             else{
                 System.out.println("__________________");
                 System.out.println("PLAYER 2 TURN");
-                p2Roll = roll(6);
+                p2Roll = roll(numRolling);
 
 
                 p1Turn = true;
@@ -152,4 +161,5 @@ public class Farkle{
         }
         return false;
     }
+    //need to write a function that checks if any of a given number is present to check for 1 and 5
 }

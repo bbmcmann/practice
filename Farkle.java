@@ -16,10 +16,11 @@ public class Farkle{
         int numRolling = 6;
         int dieOut;
         String takeOut = "";
+        String rollAgain = "";
         boolean p1Turn, rolling;
 
         System.out.println("Gather around this flat screen!");
-        System.out.println("DISCLAIMER: This game is absed off of the rules found on wikihow");
+        System.out.println("DISCLAIMER: This game is based off of the rules found on wikihow");
         System.out.println("Go look if you don't know how to play.");
         System.out.println("Cheating is not allowed because cheating is against te rules. So dont do it.");
 
@@ -53,12 +54,16 @@ public class Farkle{
                 p1Roll = roll(numRolling);
 
                 for(int i = 0; i < p1Roll.length; i ++){
-                    if(p1Roll[i] > -2){
+                    if(p1Roll[i] > -1){
                         System.out.println("Die " + (i + 1) + ":" + p1Roll[i]);
                     }
                 }
 
-                if(threeKind(p1Roll, numRolling) || numberRolled(p1Roll, 1) || numberRolled(p1Roll, 5)){
+                if(threeKind(p1Roll, numRolling) && numberRolled(p1Roll, 1) && numberRolled(p1Roll, 5)){
+                    System.out.println("You rolled Hotdice! Time to re-roll");
+                    p1Turn = true;
+                }
+                else if(threeKind(p1Roll, numRolling) || numberRolled(p1Roll, 1) || numberRolled(p1Roll, 5)){
                     System.out.println("Do you want to take out any 3 of a kind?(y/n)");
                     takeOut = input.nextLine();
 
@@ -67,13 +72,13 @@ public class Farkle{
                         dieOut = input.nextInt();
 
                         if(dieOut == 1){
-                            playerOneScore += 1000;
+                            workingScore += 1000;
                         }
                         else{
-                            playerOneScore += dieOut * 100;
+                            workingScore += dieOut * 100;
                         }
 
-                        numRolling --;
+                        numRolling -= 3;
                         System.out.println("Do you want to take out any 3 of a kind?(y/n)");
                         takeOut = input.nextLine();
                         takeOut = input.nextLine();
@@ -88,10 +93,10 @@ public class Farkle{
                         dieOut = input.nextInt();
 
                         if(dieOut == 1){
-                            playerOneScore += 100;
+                            workingScore += 100;
                         }
                         else{
-                            playerOneScore += 50;
+                            workingScore += 50;
                         }
 
                         numRolling --;
@@ -100,15 +105,29 @@ public class Farkle{
                         takeOut = input.nextLine();
                     }
                 
+                    System.out.println("TURN OVER Wanna roll again? (y/n)");
+                    rollAgain = input.nextLine();
 
+                    if(rollAgain.equals("y")){
+                        p1Turn = true;
+                    }
+                    else{
+                        p1Turn = false;
+                        numRolling = 6;
+                    }
+                    
                     
                 }
                 else{
                     System.out.println("FARKLE! BIG RIP.");
+                    workingScore = 0;
+                    numRolling = 6;
+                    p1Turn = false;
                 }
 
-                playerOneScore += 1000;
-                p1Turn = false;
+                playerOneScore += workingScore;
+                workingScore = 0;
+                
                 System.out.println("__________________");
     
             }
@@ -126,7 +145,9 @@ public class Farkle{
         }
 
     }
+
 //Idea: set die aside by setting array items == to -1 and have code only account for rolls > 0
+
     public static int[] roll(int times){
         Random random = new Random();
 
@@ -146,9 +167,9 @@ public class Farkle{
 
         for(int i = 1; i <= ammountRolling; i++){
 
-            for(int n = 0; n < roll.length; n ++){
+            for(int n = 1; n <= 6; n ++){
 
-                if(roll[i-1] == i){
+                if(roll[i-1] == n){
                     numEqual ++;
                 }
                 if(numEqual == 3){

@@ -28,5 +28,9 @@ public class Car{
         return this.time;
     }
 
+    public double findMPG(){
+        double driveDistance = 60 * this.time;
+        return driveDistance/(tankSize * 0.264172);
+    }
 
 }

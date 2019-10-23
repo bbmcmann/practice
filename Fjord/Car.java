@@ -33,7 +33,7 @@ public class Car{
         return driveDistance/(tankSize * 0.264172);
     }
 
-    public String carSummary(){
+    public String toString(){
         return make + " with type " + type + " gets " + findMPG() + " MPG.";
     }
 

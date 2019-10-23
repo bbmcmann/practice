@@ -13,19 +13,19 @@ public class Fjord{
 
         for(int i = 6; i > 0; i--){
             if(cars[i-1].getType().equals("SUV") && cars[i-1].findMPG() > 40){
-                System.out.println(cars[i-1].carSummary());
+                System.out.println(cars[i-1]);
                 System.out.println("The " + cars[i-1].getType() + " meets government regulations.");
             }
             else if(cars[i-1].getType().equals("Sedan") && cars[i-1].findMPG() > 50){
-                System.out.println(cars[i-1].carSummary());
+                System.out.println(cars[i-1]);
                 System.out.println("The " + cars[i-1].getType() + " meets government regulations.");
             }
             else if(cars[i-1].getType().equals("Truck") && cars[i-1].findMPG() > 30){
-                System.out.println(cars[i-1].carSummary());
+                System.out.println(cars[i-1]);
                 System.out.println("The " + cars[i-1].getType() + " meets government regulations.");
             }
             else{
-                System.out.println(cars[i-1].carSummary());
+                System.out.println(cars[i-1]);
                 System.out.println("***Car does not meet regulations***");
             }
         

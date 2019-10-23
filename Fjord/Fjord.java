@@ -2,11 +2,11 @@ public class Fjord{
 
     public static void main(String[] args) {
     
-        Car takk = new Car("Takk", "Sedan", 50, 8.0);
-        Car beklager = new Car("Beklager", "Sedan", 40, 7.5);
-        Car vakker = new Car("Vakker", "SUV", 60, 5.0);
-        Car stygg = new Car("Stygg", "SUV", 55, 6.0);
-        Car vanskellig = new Car("Vanskelling", "Truck", 65, 4.75);
+        Car takk = new Car("Takk", "Sedan", 40, 9.5);
+        Car beklager = new Car("Beklager", "Sedan", 45, 7.5);
+        Car vakker = new Car("Vakker", "SUV", 60, 7.5);
+        Car stygg = new Car("Stygg", "SUV", 50, 9.0);
+        Car vanskellig = new Car("Vanskelling", "Truck", 60, 8.75);
         Car lastebil = new Car("Lastebil", "Truck", 70, 5.5);
 
         Car[] cars = {takk, beklager, vakker, stygg, vanskellig, lastebil};

@@ -5,6 +5,9 @@ public class Car{
     private int tankSize;
     private double time;
 
+    public static final double LITER_CONVERSION = 0.264172;
+    public static final double DRIVE_SPEED = 60.0;
+
     public Car(String make, String type, int tankSize, double time){
         this.make = make;
         this.type = type;
@@ -29,8 +32,8 @@ public class Car{
     }
 
     public double findMPG(){
-        double driveDistance = 60 * this.time;
-        return driveDistance/(tankSize * 0.264172);
+        double driveDistance = DRIVE_SPEED * this.time;
+        return driveDistance/(tankSize * LITER_CONVERSION);
     }
 
     public String toString(){
